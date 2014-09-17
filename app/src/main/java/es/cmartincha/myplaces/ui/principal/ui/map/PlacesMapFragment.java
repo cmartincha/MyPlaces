@@ -1,10 +1,6 @@
 
 package es.cmartincha.myplaces.ui.principal.ui.map;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -33,6 +29,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
@@ -137,22 +137,6 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         connectLocationService();
     }
 
-    private void setUpMapIfNeeded() {
-        if (mMap == null) {
-            mMap = getMap();
-
-            if (mMap == null) {
-                Toast.makeText(getActivity(), R.string.text_map_unavaliable, Toast.LENGTH_SHORT)
-                        .show();
-            } else {
-                mMap.setOnMapClickListener(this);
-                mMap.setOnMarkerClickListener(this);
-                mMap.setMyLocationEnabled(true);
-                mMap.setLocationSource(this);
-            }
-        }
-    }
-
     @Override
     public void onMapClick(LatLng point) {
         navigateToEditPlaceActivity(point);
@@ -187,13 +171,30 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
-    public void onDataChanged(Cursor data) {
+    public void onDataChanged(Activity activity, Cursor data) {
+        setUpMapIfNeeded();
         mMap.clear();
 
         if (data != null) {
             mPlacesList = Place.lugaresFromCursor(data);
 
             addMarkers();
+        }
+    }
+
+    private void setUpMapIfNeeded() {
+        if (mMap == null) {
+            mMap = getMap();
+
+            if (mMap == null) {
+                Toast.makeText(getActivity(), R.string.text_map_unavaliable, Toast.LENGTH_SHORT)
+                        .show();
+            } else {
+                mMap.setOnMapClickListener(this);
+                mMap.setOnMarkerClickListener(this);
+                mMap.setMyLocationEnabled(true);
+                mMap.setLocationSource(this);
+            }
         }
     }
 

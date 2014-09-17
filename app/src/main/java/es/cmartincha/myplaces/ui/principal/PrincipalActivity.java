@@ -17,6 +17,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
+
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.db.PlacesDB;
 import es.cmartincha.myplaces.db.PlacesProvider;
@@ -143,7 +144,7 @@ public class PrincipalActivity extends ActionBarActivity implements
             PrincipalActivityFragment fragment = (PrincipalActivityFragment) mSectionsPagerAdapter
                     .getItem(i);
 
-            fragment.onDataChanged(data);
+            fragment.onDataChanged(this, data);
         }
     }
 

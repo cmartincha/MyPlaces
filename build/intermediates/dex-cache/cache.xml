@@ -2,11 +2,11 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\classes-421849d0659361c626b78a65483410a057f8da47.jar"
-        jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.2.08\classes.jar"
+        dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\classes-b45286b07fdd8cd1ef4d4e5e64e788615bfe8367.jar"
+        jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.0.89\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="1ed7a7a05185651f9af41ad93711cb96b66f331c"/>
+        sha1="d71573c9c5ea98a8db47ad6ff993a63d492b3bfa"/>
     <item
         dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-e59c7242aab5a83b1b4d076776dae1ba7bd42887.jar"
         jar="C:\Users\Carlos\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"

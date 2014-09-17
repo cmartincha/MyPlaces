@@ -1,6 +1,7 @@
 
 package es.cmartincha.myplaces.ui.principal.ui.list;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
 import es.cmartincha.myplaces.ui.place.ShowPlaceActivity;
@@ -25,15 +27,6 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
                 container, false);
 
         return rootView;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        mCursorAdapter = new PlacesListAdapter(getActivity());
-
-        setListAdapter(mCursorAdapter);
     }
 
     @Override
@@ -53,7 +46,17 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     }
 
     @Override
-    public void onDataChanged(Cursor data) {
+    public void onDataChanged(Activity activity, Cursor data) {
+        setUpAdapterIfNeeded(activity);
+
         mCursorAdapter.swapCursor(data);
+    }
+
+    private void setUpAdapterIfNeeded(Activity activity) {
+        if (getListAdapter() == null) {
+            mCursorAdapter = new PlacesListAdapter(activity);
+
+            setListAdapter(mCursorAdapter);
+        }
     }
 }
