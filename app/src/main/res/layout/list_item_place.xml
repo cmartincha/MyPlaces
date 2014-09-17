@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlListaLugares"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+    tools:context="es.cmartincha.myplaces.ui.principal.ui.list.PlacesListFragment" >
+
+    <ImageView
+        android:id="@+id/ivListPlacePhoto"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="@string/text_imagen_lugar"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_place_background" />
+
+    <TextView
+        android:id="@+id/tvListPlaceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivListPlacePhoto"
+        android:layout_toEndOf="@+id/ivListPlacePhoto"
+        android:layout_toRightOf="@+id/ivListPlacePhoto"
+        android:text="@string/text_nombre_lugar"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvListPlaceDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivListPlacePhoto"
+        android:layout_toEndOf="@+id/ivListPlacePhoto"
+        android:layout_toRightOf="@+id/ivListPlacePhoto"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/text_descripcion_lugar"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>
