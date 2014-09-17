@@ -1,0 +1,4 @@
+MyPlaces
+========
+
+Exitae final exercise
