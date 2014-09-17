@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
@@ -29,6 +30,15 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mCursorAdapter = new PlacesListAdapter(getActivity());
+
+        setListAdapter(mCursorAdapter);
+    }
+
+    @Override
     public void onListItemClick(ListView list, View view, int position, long id) {
         super.onListItemClick(list, view, position, id);
 
@@ -46,16 +56,6 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
 
     @Override
     public void onDataChanged(Activity activity, Cursor data) {
-        setUpAdapterIfNeeded(activity);
-
-        mCursorAdapter.swapCursor(data);
-    }
-
-    private void setUpAdapterIfNeeded(Activity activity) {
-        if (getListAdapter() == null) {
-            mCursorAdapter = new PlacesListAdapter(activity);
-
-            setListAdapter(mCursorAdapter);
-        }
+        mCursorAdapter.changeCursor(data);
     }
 }

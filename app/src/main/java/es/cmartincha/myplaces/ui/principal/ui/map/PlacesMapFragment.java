@@ -66,10 +66,16 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         mMarkerPlaceHash = new HashMap<String, Place>();
         mLocationClient = new LocationClient(getActivity(), this, this);
 
-        setUpMapIfNeeded();
         setFragmentPadding(rootView);
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpMapIfNeeded(getActivity());
     }
 
     private void setFragmentPadding(View rootView) {
@@ -123,18 +129,19 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         }
     }
 
-    @Override
-    public void onStop() {
-        stopLocationService();
 
-        super.onStop();
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        connectLocationService();
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onPause() {
+        stopLocationService();
 
-        connectLocationService();
+        super.onPause();
     }
 
     @Override
@@ -172,7 +179,6 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
 
     @Override
     public void onDataChanged(Activity activity, Cursor data) {
-        setUpMapIfNeeded();
         mMap.clear();
 
         if (data != null) {
@@ -182,13 +188,12 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         }
     }
 
-    private void setUpMapIfNeeded() {
+    private void setUpMapIfNeeded(Activity activity) {
         if (mMap == null) {
             mMap = getMap();
 
             if (mMap == null) {
-                Toast.makeText(getActivity(), R.string.text_map_unavaliable, Toast.LENGTH_SHORT)
-                        .show();
+                Toast.makeText(activity, R.string.text_map_unavaliable, Toast.LENGTH_SHORT).show();
             } else {
                 mMap.setOnMapClickListener(this);
                 mMap.setOnMarkerClickListener(this);
