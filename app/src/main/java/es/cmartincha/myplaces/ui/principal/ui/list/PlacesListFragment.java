@@ -23,10 +23,9 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_places_list,
-                container, false);
 
-        return rootView;
+        return inflater.inflate(R.layout.fragment_places_list,
+                container, false);
     }
 
     @Override

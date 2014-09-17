@@ -207,11 +207,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     private MarkerOptions getMarker(Place place) {
-        MarkerOptions marker = new MarkerOptions()
+        return new MarkerOptions()
                 .position(new LatLng(place.getLatitude(), place.getLongitude()))
                 .title(place.getName()).snippet(place.getDescription());
-
-        return marker;
     }
 
     @Override
