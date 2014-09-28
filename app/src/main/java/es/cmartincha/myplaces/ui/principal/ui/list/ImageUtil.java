@@ -1,15 +1,14 @@
 
 package es.cmartincha.myplaces.ui.principal.ui.list;
 
-import java.io.FileNotFoundException;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
-import android.util.DisplayMetrics;
 import android.util.Log;
+
+import java.io.FileNotFoundException;
 
 public class ImageUtil {
     private static int calculateInSampleSize(Options options, int reqWidth, int reqHeight) {
@@ -31,8 +30,8 @@ public class ImageUtil {
     }
 
     public static Bitmap decodeSampledBitmapFromResource(Context context, Uri imageUri,
-            int reqWidth,
-            int reqHeight) {
+                                                         int reqWidth,
+                                                         int reqHeight) {
 
         try {
             Options options = new Options();
@@ -52,12 +51,5 @@ public class ImageUtil {
         }
 
         return null;
-    }
-
-    public static int dpToPx(Context context, int dp) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-
-        return px;
     }
 }

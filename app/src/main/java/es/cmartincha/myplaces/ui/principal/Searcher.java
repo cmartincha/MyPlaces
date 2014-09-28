@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+
 import es.cmartincha.mislugares.R;
 
 public class Searcher {
@@ -44,6 +45,7 @@ public class Searcher {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     searchView.setQuery("%", true);
+                    searchView.setQuery("", false);
                 }
             }
         });

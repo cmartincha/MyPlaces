@@ -1,9 +1,6 @@
 
 package es.cmartincha.myplaces.lib;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import es.cmartincha.myplaces.db.PlacesDB;
 import es.cmartincha.myplaces.db.PlacesProvider;
 
@@ -29,12 +30,45 @@ public class Place {
     private double latitude;
     private double longitude;
 
-    public int get_id() {
-        return _id;
+    public static Place fromBundle(Bundle bundle) {
+        Place lugar = new Place();
+
+        lugar._id = bundle.getInt(PROPERTY_ID);
+        lugar.description = bundle.getString(PROPERTY_DESCRIPTION);
+        lugar.photo = bundle.getString(PROPERTY_PHOTO);
+        lugar.latitude = bundle.getDouble(PROPERTY_LATITUDE);
+        lugar.longitude = bundle.getDouble(PROPERTY_LONGITUDE);
+        lugar.name = bundle.getString(PROPOERTY_NAME);
+
+        return lugar;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public static Place fromCursor(Cursor cursor) {
+        Place lugar = new Place();
+
+        lugar._id = cursor.getInt(cursor.getColumnIndex(PlacesDB.PlaceTable._ID));
+        lugar.description = cursor.getString(cursor
+                .getColumnIndex(PlacesDB.PlaceTable.COLUMN_DESCRIPTION));
+        lugar.photo = cursor.getString(cursor.getColumnIndex(PlacesDB.PlaceTable.COLUMN_PHOTO));
+        lugar.latitude = cursor
+                .getDouble(cursor.getColumnIndex(PlacesDB.PlaceTable.COLUMN_LATITUDE));
+        lugar.longitude = cursor.getDouble(cursor
+                .getColumnIndex(PlacesDB.PlaceTable.COLUMN_LONGITUDE));
+        lugar.name = cursor.getString(cursor.getColumnIndex(PlacesDB.PlaceTable.COLUMN_NAME));
+
+        return lugar;
+    }
+
+    public static List<Place> lugaresFromCursor(Cursor cursor) {
+        ArrayList<Place> lugares = new ArrayList<Place>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                lugares.add(fromCursor(cursor));
+            } while (cursor.moveToNext());
+        }
+
+        return lugares;
     }
 
     public String getName() {
@@ -75,10 +109,6 @@ public class Place {
 
     public void setLongitude(double l) {
         longitude = l;
-    }
-
-    public boolean hasName() {
-        return name != null && !TextUtils.isEmpty(name);
     }
 
     public boolean hasPhoto() {
@@ -157,55 +187,6 @@ public class Place {
         }
 
         return result;
-    }
-
-    public static Place fromBundle(Bundle bundle) {
-        Place lugar = new Place();
-
-        lugar._id = bundle.getInt(PROPERTY_ID);
-        lugar.description = bundle.getString(PROPERTY_DESCRIPTION);
-        lugar.photo = bundle.getString(PROPERTY_PHOTO);
-        lugar.latitude = bundle.getDouble(PROPERTY_LATITUDE);
-        lugar.longitude = bundle.getDouble(PROPERTY_LONGITUDE);
-        lugar.name = bundle.getString(PROPOERTY_NAME);
-
-        return lugar;
-    }
-
-    public static Place fromCursor(Cursor cursor) {
-        Place lugar = new Place();
-
-        lugar._id = cursor.getInt(cursor.getColumnIndex(PlacesDB.PlaceTable._ID));
-        lugar.description = cursor.getString(cursor
-                .getColumnIndex(PlacesDB.PlaceTable.COLUMN_DESCRIPTION));
-        lugar.photo = cursor.getString(cursor.getColumnIndex(PlacesDB.PlaceTable.COLUMN_PHOTO));
-        lugar.latitude = cursor
-                .getDouble(cursor.getColumnIndex(PlacesDB.PlaceTable.COLUMN_LATITUDE));
-        lugar.longitude = cursor.getDouble(cursor
-                .getColumnIndex(PlacesDB.PlaceTable.COLUMN_LONGITUDE));
-        lugar.name = cursor.getString(cursor.getColumnIndex(PlacesDB.PlaceTable.COLUMN_NAME));
-
-        return lugar;
-    }
-
-    public static List<Place> lugaresFromCursor(Cursor cursor) {
-        ArrayList<Place> lugares = new ArrayList<Place>();
-
-        if (cursor.moveToFirst()) {
-            do {
-                lugares.add(fromCursor(cursor));
-            } while (cursor.moveToNext());
-        }
-
-        return lugares;
-    }
-
-    public String getPhotoPath() {
-        if (photo != null) {
-            return Uri.parse(photo).getPath();
-        }
-
-        return null;
     }
 
     public Uri getPhotoUri() {

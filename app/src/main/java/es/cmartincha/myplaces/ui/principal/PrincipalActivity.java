@@ -14,7 +14,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 
@@ -144,7 +143,7 @@ public class PrincipalActivity extends ActionBarActivity implements
             PrincipalActivityFragment fragment = (PrincipalActivityFragment) mSectionsPagerAdapter
                     .getItem(i);
 
-            fragment.onDataChanged(this, data);
+            fragment.notififyDataChanged(data);
         }
     }
 
@@ -161,7 +160,7 @@ public class PrincipalActivity extends ActionBarActivity implements
         if (extra != null) {
             String query = extra.getString(SearchManager.QUERY);
 
-            if (query != null && !TextUtils.isEmpty(query)) {
+            if (query != null) {
                 selection = PlacesDB.PlaceTable.COLUMN_NAME + " LIKE '" + query + "%'";
             }
         }

@@ -1,7 +1,6 @@
 
 package es.cmartincha.myplaces.ui.principal.ui.list;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -55,7 +54,7 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     }
 
     @Override
-    public void onDataChanged(Activity activity, Cursor data) {
+    public void notififyDataChanged(Cursor data) {
         mCursorAdapter.changeCursor(data);
     }
 }

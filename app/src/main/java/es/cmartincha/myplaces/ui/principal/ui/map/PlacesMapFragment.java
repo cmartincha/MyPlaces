@@ -102,8 +102,8 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
 
     private void updateMapCamera(Location location) {
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM);
+
         mMap.moveCamera(cameraUpdate);
     }
 
@@ -178,7 +178,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
-    public void onDataChanged(Activity activity, Cursor data) {
+    public void notififyDataChanged(Cursor data) {
         mMap.clear();
 
         if (data != null) {
