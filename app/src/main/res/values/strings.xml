@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MyPlaces</string>
+    <string name="app_name">Mis lugares</string>
     <string name="title_section_lista">Lista</string>
     <string name="title_section_mapa">Mapa</string>
     <string name="action_settings">Settings</string>
@@ -12,7 +12,6 @@
     <string name="text_descripcion_lugar">Descripción del lugar</string>
     <string name="text_map_unavaliable">Mapa no disponible</string>
     <string name="title_activity_mostrar_lugar">MostrarLugarActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_editar_lugar">EditarLugarActivity</string>
     <string name="text_button_cancel">Cancelar</string>
     <string name="text_button_save">Guardar</string>
