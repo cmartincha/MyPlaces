@@ -1,21 +1,20 @@
 
 package es.cmartincha.myplaces.ui.place;
 
-import java.io.FileNotFoundException;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ScrollView;
+
+import java.io.FileNotFoundException;
+
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
+import es.cmartincha.myplaces.ui.view.ZoomableImageView;
 
 public class ShowPlacePhotoActivity extends Activity {
-    public static final String EXTRA_PLACE_INFO = "extra_place";
+    private static final String EXTRA_PLACE_INFO = "extra_place";
 
     private Place mPlace;
 
@@ -32,14 +31,9 @@ public class ShowPlacePhotoActivity extends Activity {
         try {
             Bitmap photo = BitmapFactory.decodeStream(getContentResolver().openInputStream(
                     mPlace.getPhotoUri()));
-            PhotoImageView photoImageView = new PhotoImageView(this, photo);
-            ScrollView scrollView = (ScrollView) findViewById(R.id.svScrollView);
+            ZoomableImageView zoomableImageView = (ZoomableImageView) findViewById(R.id.zivPlacePhoto);
 
-            photoImageView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                    LayoutParams.WRAP_CONTENT));
-            photoImageView.setScaleType(ScaleType.CENTER);
-
-            scrollView.addView(photoImageView);
+            zoomableImageView.setImage(photo);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

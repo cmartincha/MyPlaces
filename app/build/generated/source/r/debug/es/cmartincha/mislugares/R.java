@@ -499,6 +499,10 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int iconifiedByDefault=0x7f010071;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int image=0x7f01008e;
         /**  Specifies a style resource to use for an indeterminate progress spinner. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1321,12 +1325,12 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f080037;
         public static final int action_bar_title=0x7f080036;
         public static final int action_context_bar=0x7f080031;
-        public static final int action_discard=0x7f08005f;
-        public static final int action_edit=0x7f080061;
+        public static final int action_discard=0x7f080060;
+        public static final int action_edit=0x7f080062;
         public static final int action_menu_divider=0x7f080027;
         public static final int action_menu_presenter=0x7f080028;
         public static final int action_mode_close_button=0x7f080038;
-        public static final int action_search=0x7f080060;
+        public static final int action_search=0x7f080061;
         public static final int activity_chooser_view_content=0x7f080039;
         public static final int always=0x7f080012;
         public static final int bEditPlaceCancel=0x7f080053;
@@ -1359,7 +1363,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f080011;
         public static final int image=0x7f08003b;
         public static final int ivEditPlacePhoto=0x7f080050;
-        public static final int ivListPlacePhoto=0x7f08005c;
+        public static final int ivListPlacePhoto=0x7f08005d;
         public static final int ivShowPlacePhoto=0x7f080056;
         public static final int listMode=0x7f080001;
         public static final int list_item=0x7f08003d;
@@ -1373,7 +1377,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f08002a;
         public static final int progress_horizontal=0x7f08002b;
         public static final int radio=0x7f080043;
-        public static final int rlListaLugares=0x7f08005b;
+        public static final int rlImageLayout=0x7f080059;
+        public static final int rlListaLugares=0x7f08005c;
         public static final int sandbox=0x7f08001a;
         public static final int satellite=0x7f08000d;
         public static final int search_badge=0x7f080046;
@@ -1394,23 +1399,23 @@ containing a value of this type.
         public static final int split_action_bar=0x7f080032;
         public static final int strict_sandbox=0x7f08001b;
         public static final int submit_area=0x7f08004d;
-        public static final int svScrollView=0x7f080059;
         public static final int tabMode=0x7f080002;
         public static final int tag_holder=0x7f08002c;
         public static final int tag_lugar=0x7f08002d;
         public static final int terrain=0x7f08000e;
         public static final int title=0x7f08003f;
         public static final int top_action_bar=0x7f080034;
-        public static final int tvListPlaceDescription=0x7f08005e;
-        public static final int tvListPlaceName=0x7f08005d;
+        public static final int tvListPlaceDescription=0x7f08005f;
+        public static final int tvListPlaceName=0x7f08005e;
         public static final int tvShowPlaceDescription=0x7f080058;
         public static final int tvShowPlaceName=0x7f080057;
-        public static final int tvSourcePhotoName=0x7f08005a;
+        public static final int tvSourcePhotoName=0x7f08005b;
         public static final int up=0x7f080035;
         public static final int useLogo=0x7f080003;
         public static final int vpMisLugares=0x7f080055;
         public static final int withText=0x7f080013;
         public static final int wrap_content=0x7f08001f;
+        public static final int zivPlacePhoto=0x7f08005a;
     }
     public static final class integer {
         public static final int abc_max_action_buttons=0x7f0a0000;
@@ -4037,5 +4042,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name es.cmartincha.mislugares:maskedWalletDetailsTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsTextAppearance = 4;
+        /** Attributes that can be used with a ZoomableImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ZoomableImageView_image es.cmartincha.mislugares:image}</code></td><td></td></tr>
+           </table>
+           @see #ZoomableImageView_image
+         */
+        public static final int[] ZoomableImageView = {
+            0x7f01008e
+        };
+        /**
+          <p>This symbol is the offset where the {@link es.cmartincha.mislugares.R.attr#image}
+          attribute's value can be found in the {@link #ZoomableImageView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name es.cmartincha.mislugares:image
+        */
+        public static final int ZoomableImageView_image = 0;
     };
 }
