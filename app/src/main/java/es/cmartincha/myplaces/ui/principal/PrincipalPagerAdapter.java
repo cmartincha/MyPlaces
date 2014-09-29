@@ -1,14 +1,15 @@
 
 package es.cmartincha.myplaces.ui.principal;
 
-import java.util.Locale;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import java.util.Locale;
+
 import es.cmartincha.mislugares.R;
-import es.cmartincha.myplaces.ui.principal.ui.list.PlacesListFragment;
-import es.cmartincha.myplaces.ui.principal.ui.map.PlacesMapFragment;
+import es.cmartincha.myplaces.ui.principal.list.PlacesListFragment;
+import es.cmartincha.myplaces.ui.principal.map.PlacesMapFragment;
 
 public class PrincipalPagerAdapter extends FragmentPagerAdapter {
     private static final int NUM_ITEMS = 2;
@@ -19,7 +20,7 @@ public class PrincipalPagerAdapter extends FragmentPagerAdapter {
     private PrincipalActivityFragment[] mFragments;
 
     public PrincipalPagerAdapter(PrincipalActivity principalActivity,
-            FragmentManager fm) {
+                                 FragmentManager fm) {
         super(fm);
 
         mPrincipalActivity = principalActivity;

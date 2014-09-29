@@ -1,5 +1,5 @@
 
-package es.cmartincha.myplaces.ui.principal.ui.list;
+package es.cmartincha.myplaces.ui.principal.list;
 
 import android.content.Context;
 import android.graphics.Bitmap;

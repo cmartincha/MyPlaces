@@ -1,5 +1,5 @@
 
-package es.cmartincha.myplaces.ui.principal.ui.list;
+package es.cmartincha.myplaces.ui.principal.list;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
 

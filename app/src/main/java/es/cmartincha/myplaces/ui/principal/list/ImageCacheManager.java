@@ -1,5 +1,5 @@
 
-package es.cmartincha.myplaces.ui.principal.ui.list;
+package es.cmartincha.myplaces.ui.principal.list;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
@@ -26,6 +26,14 @@ public class ImageCacheManager {
         };
     }
 
+    public static ImageCacheManager getInstance() {
+        if (imageCacheManagerInstance == null) {
+            imageCacheManagerInstance = new ImageCacheManager();
+        }
+
+        return imageCacheManagerInstance;
+    }
+
     public synchronized boolean put(String key, Bitmap bitmap) {
         return mMemoryChache.put(key, bitmap) != null;
     }
@@ -36,13 +44,5 @@ public class ImageCacheManager {
 
     public void remove(String key) {
         mMemoryChache.remove(key);
-    }
-
-    public static ImageCacheManager getInstance() {
-        if (imageCacheManagerInstance == null) {
-            imageCacheManagerInstance = new ImageCacheManager();
-        }
-
-        return imageCacheManagerInstance;
     }
 }

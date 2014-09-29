@@ -1,4 +1,4 @@
-package es.cmartincha.myplaces.ui.principal.ui.map;
+package es.cmartincha.myplaces.ui.principal.map;
 
 import android.app.Dialog;
 import android.os.Bundle;

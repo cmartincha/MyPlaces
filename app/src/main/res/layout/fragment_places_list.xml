@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="8dp"
-    tools:context="es.cmartincha.myplaces.ui.principal.ui.list.PlacesListFragment" >
+    tools:context="es.cmartincha.myplaces.ui.principal.list.PlacesListFragment">
 
     <ListView
         android:id="@id/android:list"

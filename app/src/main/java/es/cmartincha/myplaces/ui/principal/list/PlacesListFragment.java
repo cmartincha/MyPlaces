@@ -1,5 +1,5 @@
 
-package es.cmartincha.myplaces.ui.principal.ui.list;
+package es.cmartincha.myplaces.ui.principal.list;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,7 +22,7 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_places_list,
                 container, false);

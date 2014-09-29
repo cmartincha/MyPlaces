@@ -1,5 +1,5 @@
 
-package es.cmartincha.myplaces.ui.principal.ui.map;
+package es.cmartincha.myplaces.ui.principal.map;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -60,7 +60,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
         mMarkerPlaceHash = new HashMap<String, Place>();

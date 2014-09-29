@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingBottom="8dp"
     android:paddingTop="8dp"
-    tools:context="es.cmartincha.myplaces.ui.principal.ui.list.PlacesListFragment" >
+    tools:context="es.cmartincha.myplaces.ui.principal.list.PlacesListFragment">
 
     <ImageView
         android:id="@+id/ivListPlacePhoto"

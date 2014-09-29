@@ -1,13 +1,13 @@
 
-package es.cmartincha.myplaces.ui.principal.ui.list;
-
-import java.lang.ref.WeakReference;
+package es.cmartincha.myplaces.ui.principal.list;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+
+import java.lang.ref.WeakReference;
 
 public class ImageLoader {
     private Uri mImageUri;
