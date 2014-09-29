@@ -125,7 +125,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     private void connectLocationService() {
-        if (!mLocationClient.isConnected() && servicesConnected()) {
+        if (!mLocationClient.isConnected() && !mLocationClient.isConnecting() && servicesConnected()) {
             mLocationClient.connect();
         }
     }
@@ -143,6 +143,13 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         stopLocationService();
 
         super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        stopLocationService();
+
+        super.onStop();
     }
 
     @Override

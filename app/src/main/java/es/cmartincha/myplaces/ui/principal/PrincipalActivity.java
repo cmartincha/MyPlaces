@@ -14,7 +14,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
@@ -106,18 +105,18 @@ public class PrincipalActivity extends ActionBarActivity implements
 
     @Override
     public void onTabSelected(ActionBar.Tab tab,
-            FragmentTransaction fragmentTransaction) {
+                              FragmentTransaction fragmentTransaction) {
         vpMyPlaces.setCurrentItem(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab,
-            FragmentTransaction fragmentTransaction) {
+                                FragmentTransaction fragmentTransaction) {
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab,
-            FragmentTransaction fragmentTransaction) {
+                                FragmentTransaction fragmentTransaction) {
     }
 
     @Override
@@ -135,19 +134,16 @@ public class PrincipalActivity extends ActionBarActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        Log.d("Traza", "Loader finished");
         notifyDataChangeToFragments(data);
     }
 
     private void notifyDataChangeToFragments(Cursor data) {
-        Log.d("Traza", "Notifico datos cambiados " + (data == null ? "Nulo" : data.getCount()));
         mSectionsPagerAdapter.setData(data);
         mSectionsPagerAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        Log.d("Traza", "Loader reset");
         notifyDataChangeToFragments(null);
     }
 
