@@ -2,34 +2,24 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\classes-b45286b07fdd8cd1ef4d4e5e64e788615bfe8367.jar"
-        jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.0.89\classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="d71573c9c5ea98a8db47ad6ff993a63d492b3bfa"/>
-    <item
         dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-e59c7242aab5a83b1b4d076776dae1ba7bd42887.jar"
         jar="C:\Users\Carlos\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+        jumboMode="false" revision="20.0.0" sha1="9d9013e9ff35fc3756411e62873c363c70c638fa" />
     <item
         dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-8fd9a12b21fe01cbc6a8ea85d329f94fa2bdd4ae.jar"
         jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+        jumboMode="false" revision="20.0.0" sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d" />
+    <item
+        dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\classes-b45286b07fdd8cd1ef4d4e5e64e788615bfe8367.jar"
+        jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.0.89\classes.jar"
+        jumboMode="false" revision="20.0.0" sha1="d71573c9c5ea98a8db47ad6ff993a63d492b3bfa" />
     <item
         dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\classes-8291a2a0ae278e50cbce48bfd8f2fe5ca59e3e92.jar"
         jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+        jumboMode="false" revision="20.0.0" sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef" />
     <item
         dex="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\pre-dexed\debug\classes-ebc1e48f0b9672f98fe3cb5739cd651894aceadc.jar"
         jar="C:\Users\Carlos\AndroidstudioProjects\MyPlaces\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+        jumboMode="false" revision="20.0.0" sha1="8694693636ab36910c8100ce527c258ff3ebece0" />
 
 </pre-dex-items>

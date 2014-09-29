@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
@@ -94,6 +95,7 @@ public class PrincipalActivity extends ActionBarActivity implements
 
     private void setUpViewPager() {
         mSectionsPagerAdapter = new PrincipalPagerAdapter(this,
+                null,
                 getSupportFragmentManager());
         vpMyPlaces = (ViewPager) findViewById(R.id.vpMisLugares);
 
@@ -133,22 +135,19 @@ public class PrincipalActivity extends ActionBarActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        Log.d("Traza", "Loader finished");
         notifyDataChangeToFragments(data);
     }
 
     private void notifyDataChangeToFragments(Cursor data) {
-        int numFragments = mSectionsPagerAdapter.getCount();
-
-        for (int i = 0; i < numFragments; i++) {
-            PrincipalActivityFragment fragment = (PrincipalActivityFragment) mSectionsPagerAdapter
-                    .getItem(i);
-
-            fragment.notififyDataChanged(data);
-        }
+        Log.d("Traza", "Notifico datos cambiados " + (data == null ? "Nulo" : data.getCount()));
+        mSectionsPagerAdapter.setData(data);
+        mSectionsPagerAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        Log.d("Traza", "Loader reset");
         notifyDataChangeToFragments(null);
     }
 

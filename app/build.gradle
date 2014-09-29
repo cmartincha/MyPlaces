@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "es.cmartincha.mislugares"
-        minSdkVersion 8
-        targetSdkVersion 21
+        minSdkVersion 9
+        targetSdkVersion 20
     }
 
     buildTypes {

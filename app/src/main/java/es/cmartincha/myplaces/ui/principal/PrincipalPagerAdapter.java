@@ -1,9 +1,11 @@
 
 package es.cmartincha.myplaces.ui.principal;
 
+import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import java.util.Locale;
 
@@ -11,18 +13,19 @@ import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.ui.principal.list.PlacesListFragment;
 import es.cmartincha.myplaces.ui.principal.map.PlacesMapFragment;
 
-public class PrincipalPagerAdapter extends FragmentPagerAdapter {
+public class PrincipalPagerAdapter extends FragmentStatePagerAdapter {
     private static final int NUM_ITEMS = 2;
     private static final int LIST_FRAGMENT_POSITION = 0;
     private static final int MAP_FRAGMENT_POSITION = 1;
 
     private PrincipalActivity mPrincipalActivity;
     private PrincipalActivityFragment[] mFragments;
+    private Cursor mData;
 
-    public PrincipalPagerAdapter(PrincipalActivity principalActivity,
-                                 FragmentManager fm) {
+    public PrincipalPagerAdapter(PrincipalActivity principalActivity, Cursor data, FragmentManager fm) {
         super(fm);
 
+        mData = data;
         mPrincipalActivity = principalActivity;
         setFragments();
     }
@@ -32,6 +35,10 @@ public class PrincipalPagerAdapter extends FragmentPagerAdapter {
 
         mFragments[LIST_FRAGMENT_POSITION] = new PlacesListFragment();
         mFragments[MAP_FRAGMENT_POSITION] = new PlacesMapFragment();
+    }
+
+    public void setData(Cursor data) {
+        mData = data;
     }
 
     @Override
@@ -58,5 +65,15 @@ public class PrincipalPagerAdapter extends FragmentPagerAdapter {
         }
 
         return null;
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        Log.d("Traza", "Obtener posicion item " + (mData == null ? "Nulo" : mData.getCount()));
+        PrincipalActivityFragment fragment = (PrincipalActivityFragment) object;
+
+        fragment.notififyDataChanged(mData);
+
+        return super.getItemPosition(object);
     }
 }

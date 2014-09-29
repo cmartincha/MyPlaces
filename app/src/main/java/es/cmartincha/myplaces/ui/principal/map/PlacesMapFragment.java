@@ -67,6 +67,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         mLocationClient = new LocationClient(getActivity(), this, this);
 
         setFragmentPadding(rootView);
+        setRetainInstance(true);
 
         return rootView;
     }
@@ -75,7 +76,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        setUpMapIfNeeded(getActivity());
+        setUpMapIfNeeded();
     }
 
     private void setFragmentPadding(View rootView) {
@@ -188,12 +189,12 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         }
     }
 
-    private void setUpMapIfNeeded(Activity activity) {
+    private void setUpMapIfNeeded() {
         if (mMap == null) {
             mMap = getMap();
 
             if (mMap == null) {
-                Toast.makeText(activity, R.string.text_map_unavaliable, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.text_map_unavaliable, Toast.LENGTH_SHORT).show();
             } else {
                 mMap.setOnMapClickListener(this);
                 mMap.setOnMarkerClickListener(this);

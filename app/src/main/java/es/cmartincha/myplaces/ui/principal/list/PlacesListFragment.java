@@ -24,6 +24,7 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        setRetainInstance(true);
         return inflater.inflate(R.layout.fragment_places_list,
                 container, false);
     }
@@ -55,6 +56,6 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
 
     @Override
     public void notififyDataChanged(Cursor data) {
-        mCursorAdapter.changeCursor(data);
+        mCursorAdapter.swapCursor(data);
     }
 }
