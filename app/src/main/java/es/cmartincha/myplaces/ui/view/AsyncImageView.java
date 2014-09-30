@@ -13,7 +13,7 @@ import es.cmartincha.myplaces.ui.principal.list.ImageCacheManager;
 import es.cmartincha.myplaces.ui.principal.list.ImageUtil;
 
 /**
- * Created by Carlos on 30/09/2014.
+ * ImageView que carga la imagen de manera asincrona y la obtiene de la cache si existe
  */
 public class AsyncImageView extends ImageView {
     private static final int DEFAULT_HEIGHT_DP = 48;
@@ -49,7 +49,9 @@ public class AsyncImageView extends ImageView {
             Uri imageUri = params[0];
             Bitmap bitmap = mImageCacheManager.get(imageUri.getPath());
 
+            //Si la imagen no esta en cache la proceso
             if (bitmap == null) {
+                //cargo una version con el tamaño necesario en memoria
                 bitmap = ImageUtil.decodeSampledBitmapFromResource(getContext(), imageUri, (int) mWidth, (int) mHeight);
                 if (bitmap != null) {
                     mImageCacheManager.put(imageUri.getPath(), bitmap);

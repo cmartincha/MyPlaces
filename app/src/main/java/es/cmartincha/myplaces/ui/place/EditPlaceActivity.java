@@ -36,6 +36,9 @@ import es.cmartincha.myplaces.ui.dialog.DialogItem;
 import es.cmartincha.myplaces.ui.principal.PrincipalActivity;
 import es.cmartincha.myplaces.ui.principal.list.ImageUtil;
 
+/**
+ * Actividad de edicion de un lugar
+ */
 public class EditPlaceActivity extends ActionBarActivity implements OnClickListener,
         android.content.DialogInterface.OnClickListener {
     public static final String EXTRA_PLACE_INFO = "extra_place";
@@ -111,6 +114,8 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
 
     private void showConfirmDeleteDialog() {
         final Context context = this;
+
+        //Creo el dialogo de confirmacion para borrar
         AlertDialog.Builder builder = new Builder(context);
 
         builder.setMessage(R.string.text_confirm_discard);
@@ -151,6 +156,8 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
 
     private void setPhoto() {
         if (mPlace.hasPhoto()) {
+            //Si el lugar tiene foto cargo una version que se ajuste al tamaño del ImageView. Pero unicamente conozco su tamaño dentro de este listener.
+            //En el oncreate, onstart, onresume, etc. El tamaño de imageview es siempre cero.
             ViewTreeObserver viewTreeObserver = ivPlacePhoto.getViewTreeObserver();
             if (viewTreeObserver.isAlive()) {
                 viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -214,6 +221,7 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
         Intent resultData = new Intent();
 
         resultData.putExtra(EXTRA_PLACE_INFO, mPlace.toBundle());
+
         return resultData;
     }
 
@@ -285,6 +293,12 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
         }
     }
 
+    /**
+     * Crea el arhivo donde se guardara la foto de la camara
+     *
+     * @return
+     * @throws IOException
+     */
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
                 .format(new Date());
@@ -300,7 +314,7 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
-            Intent data) {
+                                    Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {

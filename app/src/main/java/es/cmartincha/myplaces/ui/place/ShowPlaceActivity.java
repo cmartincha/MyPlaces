@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,20 +47,6 @@ public class ShowPlaceActivity extends ActionBarActivity implements OnClickListe
         tvPlaceDescription = (TextView) findViewById(R.id.tvShowPlaceDescription);
 
         ivPlacePhoto.setOnClickListener(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Log.d("Tamaño imagen", String.valueOf(ivPlacePhoto.getWidth()));
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Log.d("Tamaño imagen", String.valueOf(ivPlacePhoto.getWidth()));
     }
 
     private void fillPlaceInfo() {

@@ -13,6 +13,9 @@ import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
 import es.cmartincha.myplaces.ui.view.AsyncImageView;
 
+/**
+ * Clase adaptador para el listado de lugares
+ */
 public class PlacesListAdapter extends CursorAdapter {
     private Context mContext;
 

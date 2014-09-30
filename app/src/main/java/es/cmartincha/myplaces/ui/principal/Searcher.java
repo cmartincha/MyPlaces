@@ -15,6 +15,9 @@ import android.view.View.OnFocusChangeListener;
 
 import es.cmartincha.mislugares.R;
 
+/**
+ * Clase para configurar el buscador de la actividad principal
+ */
 public class Searcher {
     private Activity mActivity;
 
@@ -23,6 +26,7 @@ public class Searcher {
     }
 
     public void setUp(Menu menu) {
+        //Si la version de android es honeycomb o superior entonces se muestra el widget de la parte superior. Si no se muestra un dialogo de busqueda
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setUpSearchWidget(menu);
         } else {
@@ -31,6 +35,9 @@ public class Searcher {
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    /**
+     * Configura el widget (solo para honeycomb o posteriores)
+     */
     private void setUpSearchWidget(Menu menu) {
         SearchManager searchManager = (SearchManager) mActivity
                 .getSystemService(Context.SEARCH_SERVICE);
@@ -40,6 +47,8 @@ public class Searcher {
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(mActivity.getComponentName()));
         searchView.setIconifiedByDefault(false);
+
+        //Si el buscador se cierra restauro el listado original de lugares
         searchView.setOnQueryTextFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -51,6 +60,11 @@ public class Searcher {
         });
     }
 
+    /**
+     * Configra el dialogo de busqueda. Solo para versiones anteriores a honeycomb
+     *
+     * @param menu
+     */
     private void setUpSearchDialog(Menu menu) {
         MenuItem searchItem = menu.findItem(R.id.action_search);
 

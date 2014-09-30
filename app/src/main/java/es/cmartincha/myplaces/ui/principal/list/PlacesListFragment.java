@@ -24,6 +24,9 @@ import es.cmartincha.myplaces.ui.place.EditPlaceActivity;
 import es.cmartincha.myplaces.ui.place.ShowPlaceActivity;
 import es.cmartincha.myplaces.ui.principal.PrincipalActivityFragment;
 
+/**
+ * Fragment con el listado de lugares
+ */
 public class PlacesListFragment extends ListFragment implements PrincipalActivityFragment, AdapterView.OnItemLongClickListener, DialogInterface.OnClickListener {
     private static final String EXTRA_PLACE_INFO = "extra_place";
     private static final int DIALOG_EDIT_OPTION = 0;
@@ -34,6 +37,7 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //Evita que se destruya el fragment al volver a crear la actividad
         setRetainInstance(true);
 
         return inflater.inflate(R.layout.fragment_places_list,
@@ -73,6 +77,9 @@ public class PlacesListFragment extends ListFragment implements PrincipalActivit
     }
 
     @Override
+    /**
+     * Si mantengo pulsado en un elemento de la lista aparece un dialogo con opciones (editar y eliminar)
+     */
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         DialogItem[] dialogItems = {

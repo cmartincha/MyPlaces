@@ -10,7 +10,13 @@ import android.widget.TextView;
 
 import es.cmartincha.mislugares.R;
 
+/**
+ * Adaptador para mostrar un dialogo con un listado de opciones (ej. camara, galeria, ...)
+ */
 public class DialogAdapter extends ArrayAdapter<DialogItem> {
+    /**
+     * Array opciones
+     */
     private DialogItem[] mDialogItems;
 
     public DialogAdapter(Context context, DialogItem[] dialogItems) {
@@ -21,7 +27,11 @@ public class DialogAdapter extends ArrayAdapter<DialogItem> {
         fillDialogOptionsItems();
     }
 
+    /**
+     * Metodo para añadir las posibles opciones
+     */
     private void fillDialogOptionsItems() {
+        //No quiero que se notifiquen los cambios puesto que estoy inicializando las opciones
         setNotifyOnChange(false);
 
         for (DialogItem imageAppsItem : mDialogItems) {

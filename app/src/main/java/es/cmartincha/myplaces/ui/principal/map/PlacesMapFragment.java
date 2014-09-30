@@ -36,10 +36,14 @@ import java.util.Map;
 
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
+import es.cmartincha.myplaces.ui.dialog.LocationErrorDialogFragment;
 import es.cmartincha.myplaces.ui.place.EditPlaceActivity;
 import es.cmartincha.myplaces.ui.place.ShowPlaceActivity;
 import es.cmartincha.myplaces.ui.principal.PrincipalActivityFragment;
 
+/**
+ * Clase que muestra el mapa de lugares
+ */
 public class PlacesMapFragment extends SupportMapFragment implements OnMapClickListener,
         OnMarkerClickListener, PrincipalActivityFragment,
         GooglePlayServicesClient.ConnectionCallbacks,
@@ -66,7 +70,8 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         mMarkerPlaceHash = new HashMap<String, Place>();
         mLocationClient = new LocationClient(getActivity(), this, this);
 
-        setFragmentPadding(rootView);
+        setPadding(rootView);
+        //Evita que se destruya el fragment al volver a crear la actividad
         setRetainInstance(true);
 
         return rootView;
@@ -79,7 +84,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
         setUpMapIfNeeded();
     }
 
-    private void setFragmentPadding(View rootView) {
+    private void setPadding(View rootView) {
         int horizontalPadding = (int) getResources().getDimension(
                 R.dimen.activity_horizontal_margin);
         int verticalPadding = (int) getResources().getDimension(R.dimen.activity_vertical_margin);
@@ -88,6 +93,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
+    /**
+     * Se llama cuando google maps activa el servicio de localizacion
+     */
     public void activate(OnLocationChangedListener listener) {
         connectLocationService();
 
@@ -98,6 +106,7 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     public void onLocationChanged(Location location) {
         mListener.onLocationChanged(location);
 
+        //Actualizo la posicion y el zoom del mapa para que muestre la posicion actual
         updateMapCamera(location);
     }
 
@@ -109,6 +118,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
+    /**
+     * Se llama cuando google maps desactiva el servicio de localizacion
+     */
     public void deactivate() {
         stopLocationService();
     }
@@ -186,6 +198,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
+    /**
+     * Pinta los marcadores con la informacion actualizada
+     */
     public void notififyDataChanged(Cursor data) {
         mMap.clear();
 
@@ -233,16 +248,22 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
             case CONNECTION_FAILURE_RESOLUTION_REQUEST:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
+                        //Si no ha habido problema en conectarse a los servicios de google play conecto el servicio de localizaion
                         connectLocationService();
                         break;
                 }
         }
     }
 
+    /**
+     * Verifica que has podido conectarte a los servicios de google play. En caso de no poder muestra un dialogo con un error
+     *
+     * @return
+     */
     private boolean servicesConnected() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity());
 
-        if (ConnectionResult.SUCCESS == resultCode) {
+        if (resultCode == ConnectionResult.SUCCESS) {
             return true;
         } else {
             int errorCode = resultCode;
@@ -266,6 +287,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
+    /**
+     * Se llama si ha fallado la conexion al servicio de localizacion
+     */
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
             try {
@@ -280,6 +304,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
+    /**
+     * Se llama cuando se ha conectado al servicio de localizacion
+     */
     public void onConnected(Bundle dataBundle) {
         requestLocationUpdates();
     }
@@ -295,6 +322,9 @@ public class PlacesMapFragment extends SupportMapFragment implements OnMapClickL
     }
 
     @Override
+    /**
+     * Se llama cuando se ha desconectado del servicio de localizacion
+     */
     public void onDisconnected() {
         removeLocationUpdates();
     }

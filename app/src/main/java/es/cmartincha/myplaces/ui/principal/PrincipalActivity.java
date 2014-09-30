@@ -43,10 +43,14 @@ public class PrincipalActivity extends ActionBarActivity implements
 
     private void setUpActionBar() {
         mActionBar = getSupportActionBar();
+        //Configuro el actionBar para que muestre pestañas
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     }
 
     @Override
+    /**
+     * Este metodo se llama cuando se va a realizar una busqueda
+     */
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
@@ -60,6 +64,7 @@ public class PrincipalActivity extends ActionBarActivity implements
         String query = intent.getStringExtra(SearchManager.QUERY);
 
         extra.putString(SearchManager.QUERY, query);
+        //Reinicio el loader con el texto de la busqueda de la busqueda
         getSupportLoaderManager().restartLoader(0, extra, this);
     }
 
@@ -72,6 +77,7 @@ public class PrincipalActivity extends ActionBarActivity implements
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.principal, menu);
 
+        //Configura el buscador del actionBar
         mSearcher = new Searcher(this);
 
         mSearcher.setUp(menu);
@@ -84,6 +90,9 @@ public class PrincipalActivity extends ActionBarActivity implements
         addTabs();
     }
 
+    /**
+     * Añade las pestañas al actionBar
+     */
     private void addTabs() {
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             mActionBar.addTab(mActionBar.newTab()
@@ -92,6 +101,9 @@ public class PrincipalActivity extends ActionBarActivity implements
         }
     }
 
+    /**
+     * Configura el deslizador horizontal para moverse entre las pestañas
+     */
     private void setUpViewPager() {
         mSectionsPagerAdapter = new PrincipalPagerAdapter(this,
                 null,
@@ -128,6 +140,9 @@ public class PrincipalActivity extends ActionBarActivity implements
     }
 
     @Override
+    /**
+     * Cuando te deslizas a una pagina actualiza la pestaña activa
+     */
     public void onPageSelected(int position) {
         mActionBar.setSelectedNavigationItem(position);
     }
@@ -137,6 +152,11 @@ public class PrincipalActivity extends ActionBarActivity implements
         notifyDataChangeToFragments(data);
     }
 
+    /**
+     * Notifica un cambio en los lugares a todas las paginas para que se refresquen con la informacion actualizada
+     *
+     * @param data
+     */
     private void notifyDataChangeToFragments(Cursor data) {
         mSectionsPagerAdapter.setData(data);
         mSectionsPagerAdapter.notifyDataSetChanged();
@@ -152,7 +172,7 @@ public class PrincipalActivity extends ActionBarActivity implements
         Uri baseUri = Uri.parse("content://" + PlacesProvider.AUTHORITY + "/"
                 + PlacesDB.PlaceTable.TABLE_NAME);
         String selection = null;
-        if (extra != null) {
+        if (extra != null) { //Se esta realizando una busqueda
             String query = extra.getString(SearchManager.QUERY);
 
             if (query != null) {

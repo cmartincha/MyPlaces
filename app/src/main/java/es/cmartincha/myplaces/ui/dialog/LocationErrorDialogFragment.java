@@ -1,9 +1,12 @@
-package es.cmartincha.myplaces.ui.principal.map;
+package es.cmartincha.myplaces.ui.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+/**
+ * Dialogo de error en el servicio de localizacion de google
+ */
 public class LocationErrorDialogFragment extends DialogFragment {
     private Dialog mDialog;
 

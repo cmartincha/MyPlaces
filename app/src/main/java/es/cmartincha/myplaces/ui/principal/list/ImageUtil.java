@@ -12,6 +12,9 @@ import android.util.TypedValue;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Clase con funciones para manejar imagenes
+ */
 public class ImageUtil {
     private static int calculateInSampleSize(Options options, int reqWidth, int reqHeight) {
         int height = options.outHeight;

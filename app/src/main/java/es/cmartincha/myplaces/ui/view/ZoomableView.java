@@ -15,6 +15,9 @@ import android.view.View;
 
 import es.cmartincha.mislugares.R;
 
+/**
+ * View que muestra una imagen y permite redimensionarla y moverte por ella
+ */
 public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGestureListener {
     private ScaleGestureDetector mDetector;
     private Bitmap mImageBitmap;
@@ -64,14 +67,18 @@ public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGe
 
         boolean isMultiTouch = event.getPointerCount() > 1;
 
+        //Se ha pulsado con mas de un dedo
         if (isMultiTouch) {
+            //Detecto si es un gesto de zoom
             mDetector.onTouchEvent(event);
 
+            //Hace que se refresque la vista
             invalidate();
         } else {
             float mCurrentX = event.getX();
             float mCurrentY = event.getY();
 
+            //Se esta moviendo un dedo
             if (event.getAction() == MotionEvent.ACTION_MOVE) {
                 float DX = mCurrentX - mOldX;
                 float DY  = mCurrentY - mOldY;
@@ -87,7 +94,7 @@ public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGe
                 }
 
                 invalidate();
-            } else if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            } else if (event.getAction() == MotionEvent.ACTION_DOWN) { //Se ha pulsado con un dedo
                 mOldX = mCurrentX;
                 mOldY = mCurrentY;
             }
@@ -103,6 +110,7 @@ public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGe
         int width = View.MeasureSpec.getSize(widthMeasureSpec);
         int height = View.MeasureSpec.getSize(heightMeasureSpec);
 
+        //Calculo el area de dibujado inicial
         mDestinationRectF.set(0, 0, width, height);
 
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
@@ -137,6 +145,8 @@ public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGe
 
     @Override
     public void onScaleEnd(ScaleGestureDetector scaleGestureDetector) {
+        //Cuando termino el escalado desactivo temporalmente el evento de mover para que no haga un desplazamiento involuntario al apartar los dedos.
+        //Es muy probable que no los apartes a la vez y uno de ellos siga desplazandose momentaneamente por la pantalla
         mSuspendTouchEvent = true;
 
         new CountDownTimer(300, 3000) {
