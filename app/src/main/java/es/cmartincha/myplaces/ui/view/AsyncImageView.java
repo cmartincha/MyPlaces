@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
@@ -47,7 +46,6 @@ public class AsyncImageView extends ImageView {
 
         @Override
         protected Bitmap doInBackground(Uri... params) {
-            Log.d("Medidas", String.valueOf(mWidth));
             Uri imageUri = params[0];
             Bitmap bitmap = mImageCacheManager.get(imageUri.getPath());
 

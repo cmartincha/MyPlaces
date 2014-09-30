@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +34,7 @@ import es.cmartincha.myplaces.lib.Place;
 import es.cmartincha.myplaces.ui.dialog.DialogAdapter;
 import es.cmartincha.myplaces.ui.dialog.DialogItem;
 import es.cmartincha.myplaces.ui.principal.PrincipalActivity;
+import es.cmartincha.myplaces.ui.principal.list.ImageUtil;
 
 public class EditPlaceActivity extends ActionBarActivity implements OnClickListener,
         android.content.DialogInterface.OnClickListener {
@@ -141,14 +143,33 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
     }
 
     private void fillPlaceInfo() {
-        if (mPlace.hasPhoto()) {
-            ivPlacePhoto.setImageURI(Uri.parse(mPlace.getPhoto()));
-        } else {
-            ivPlacePhoto.setScaleType(ScaleType.CENTER_INSIDE);
-        }
+        setPhoto();
 
         etPlaceName.setText(mPlace.getName());
         etPlaceDescription.setText(mPlace.getDescription());
+    }
+
+    private void setPhoto() {
+        if (mPlace.hasPhoto()) {
+            ViewTreeObserver viewTreeObserver = ivPlacePhoto.getViewTreeObserver();
+            if (viewTreeObserver.isAlive()) {
+                viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        int viewWidth = ivPlacePhoto.getWidth();
+                        int viewHeight = ivPlacePhoto.getHeight();
+
+                        ivPlacePhoto.setScaleType(ScaleType.CENTER_CROP);
+                        ivPlacePhoto.setImageBitmap(ImageUtil.decodeSampledBitmapFromResource(ivPlacePhoto.getContext(), mPlace.getPhotoUri(), viewWidth, viewHeight));
+
+                        ivPlacePhoto.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    }
+                });
+            }
+        } else {
+            ivPlacePhoto.setScaleType(ScaleType.CENTER_INSIDE);
+            ivPlacePhoto.setImageDrawable(getResources().getDrawable(R.drawable.default_place_background));
+        }
     }
 
     @Override

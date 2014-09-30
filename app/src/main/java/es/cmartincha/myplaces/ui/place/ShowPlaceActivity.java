@@ -3,19 +3,21 @@ package es.cmartincha.myplaces.ui.place;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
+import es.cmartincha.myplaces.ui.principal.list.ImageUtil;
 
 public class ShowPlaceActivity extends ActionBarActivity implements OnClickListener {
     public static final String EXTRA_PLACE_INFO = "extra_place";
@@ -48,17 +50,48 @@ public class ShowPlaceActivity extends ActionBarActivity implements OnClickListe
         ivPlacePhoto.setOnClickListener(this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.d("Tamaño imagen", String.valueOf(ivPlacePhoto.getWidth()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d("Tamaño imagen", String.valueOf(ivPlacePhoto.getWidth()));
+    }
+
     private void fillPlaceInfo() {
+        setPhoto();
+
+        tvPlaceName.setText(mPlace.getName());
+        tvPlaceDescription.setText(mPlace.getDescription());
+    }
+
+    private void setPhoto() {
         if (mPlace.hasPhoto()) {
-            ivPlacePhoto.setScaleType(ScaleType.CENTER_CROP);
-            ivPlacePhoto.setImageURI(Uri.parse(mPlace.getPhoto()));
+            ViewTreeObserver viewTreeObserver = ivPlacePhoto.getViewTreeObserver();
+            if (viewTreeObserver.isAlive()) {
+                viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        int viewWidth = ivPlacePhoto.getWidth();
+                        int viewHeight = ivPlacePhoto.getHeight();
+
+                        ivPlacePhoto.setScaleType(ScaleType.CENTER_CROP);
+                        ivPlacePhoto.setImageBitmap(ImageUtil.decodeSampledBitmapFromResource(ivPlacePhoto.getContext(), mPlace.getPhotoUri(), viewWidth, viewHeight));
+
+                        ivPlacePhoto.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    }
+                });
+            }
         } else {
             ivPlacePhoto.setScaleType(ScaleType.CENTER_INSIDE);
             ivPlacePhoto.setImageDrawable(getResources().getDrawable(R.drawable.default_place_background));
         }
-
-        tvPlaceName.setText(mPlace.getName());
-        tvPlaceDescription.setText(mPlace.getDescription());
     }
 
     @Override
