@@ -36,10 +36,6 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
         android.content.DialogInterface.OnClickListener {
     public static final String EXTRA_PLACE_INFO = "extra_place";
 
-    private static final int DIALOG_CAMERA_OPTION = 0;
-    private static final int DIALOG_GALLERY_OPTION = 1;
-    private static final int DIALOG_NO_PHOTO_OPTION = 2;
-
     private static final int CAMERA_REQUEST = 0;
     private static final int GALLERY_REQUEST = 1;
 
@@ -216,13 +212,13 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
     @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
-            case DIALOG_CAMERA_OPTION:
+            case PhotoSourceDialogItem.DIALOG_CAMERA_OPTION:
                 showCameraApp();
                 break;
-            case DIALOG_GALLERY_OPTION:
+            case PhotoSourceDialogItem.DIALOG_GALLERY_OPTION:
                 showGalleryApp();
                 break;
-            case DIALOG_NO_PHOTO_OPTION:
+            case PhotoSourceDialogItem.DIALOG_NO_PHOTO_OPTION:
                 removePlacePhoto();
                 break;
         }
