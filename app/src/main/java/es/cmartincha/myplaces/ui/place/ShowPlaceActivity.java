@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
+
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
 
@@ -53,6 +54,7 @@ public class ShowPlaceActivity extends ActionBarActivity implements OnClickListe
             ivPlacePhoto.setImageURI(Uri.parse(mPlace.getPhoto()));
         } else {
             ivPlacePhoto.setScaleType(ScaleType.CENTER_INSIDE);
+            ivPlacePhoto.setImageDrawable(getResources().getDrawable(R.drawable.default_place_background));
         }
 
         tvPlaceName.setText(mPlace.getName());

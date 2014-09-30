@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
-import es.cmartincha.myplaces.ui.view.ZoomableImageView;
+import es.cmartincha.myplaces.ui.view.ZoomableView;
 
 public class ShowPlacePhotoActivity extends Activity {
     private static final String EXTRA_PLACE_INFO = "extra_place";
@@ -31,9 +31,9 @@ public class ShowPlacePhotoActivity extends Activity {
         try {
             Bitmap photo = BitmapFactory.decodeStream(getContentResolver().openInputStream(
                     mPlace.getPhotoUri()));
-            ZoomableImageView zoomableImageView = (ZoomableImageView) findViewById(R.id.zivPlacePhoto);
+            ZoomableView zoomableView = (ZoomableView) findViewById(R.id.zivPlacePhoto);
 
-            zoomableImageView.setImage(photo);
+            zoomableView.setImage(photo);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

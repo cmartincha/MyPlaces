@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import es.cmartincha.mislugares.R;
 
 public class PhotoSourceDialogAdapter extends ArrayAdapter<PhotoSourceDialogItem> {
     private static final PhotoSourceDialogItem[] photoSourceItems = {
             new PhotoSourceDialogItem(R.string.text_camera, R.drawable.ic_action_camera),
-            new PhotoSourceDialogItem(R.string.text_gallery, R.drawable.ic_action_picture)
+            new PhotoSourceDialogItem(R.string.text_gallery, R.drawable.ic_action_picture),
+            new PhotoSourceDialogItem(R.string.text_no_photo, R.drawable.ic_action_cancel)
     };
 
     public PhotoSourceDialogAdapter(Context context) {

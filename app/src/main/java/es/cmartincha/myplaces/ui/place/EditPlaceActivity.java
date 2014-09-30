@@ -1,12 +1,6 @@
 
 package es.cmartincha.myplaces.ui.place;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -27,6 +21,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
 import es.cmartincha.myplaces.ui.principal.PrincipalActivity;
@@ -37,6 +38,7 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
 
     private static final int DIALOG_CAMERA_OPTION = 0;
     private static final int DIALOG_GALLERY_OPTION = 1;
+    private static final int DIALOG_NO_PHOTO_OPTION = 2;
 
     private static final int CAMERA_REQUEST = 0;
     private static final int GALLERY_REQUEST = 1;
@@ -220,7 +222,16 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
             case DIALOG_GALLERY_OPTION:
                 showGalleryApp();
                 break;
+            case DIALOG_NO_PHOTO_OPTION:
+                removePlacePhoto();
+                break;
         }
+    }
+
+    private void removePlacePhoto() {
+        mPlace.setPhoto(null);
+        ivPlacePhoto.setScaleType(ScaleType.CENTER_INSIDE);
+        ivPlacePhoto.setImageDrawable(getResources().getDrawable(R.drawable.default_place_background));
     }
 
     private void showGalleryApp() {

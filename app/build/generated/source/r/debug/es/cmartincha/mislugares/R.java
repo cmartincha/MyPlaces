@@ -1304,17 +1304,18 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_light=0x7f02006e;
         public static final int default_place_background=0x7f02006f;
         public static final int ic_action_camera=0x7f020070;
-        public static final int ic_action_discard=0x7f020071;
-        public static final int ic_action_edit=0x7f020072;
-        public static final int ic_action_picture=0x7f020073;
-        public static final int ic_action_search=0x7f020074;
-        public static final int ic_launcher=0x7f020075;
-        public static final int ic_plusone_medium_off_client=0x7f020076;
-        public static final int ic_plusone_small_off_client=0x7f020077;
-        public static final int ic_plusone_standard_off_client=0x7f020078;
-        public static final int ic_plusone_tall_off_client=0x7f020079;
-        public static final int powered_by_google_dark=0x7f02007a;
-        public static final int powered_by_google_light=0x7f02007b;
+        public static final int ic_action_cancel=0x7f020071;
+        public static final int ic_action_discard=0x7f020072;
+        public static final int ic_action_edit=0x7f020073;
+        public static final int ic_action_picture=0x7f020074;
+        public static final int ic_action_search=0x7f020075;
+        public static final int ic_launcher=0x7f020076;
+        public static final int ic_plusone_medium_off_client=0x7f020077;
+        public static final int ic_plusone_small_off_client=0x7f020078;
+        public static final int ic_plusone_standard_off_client=0x7f020079;
+        public static final int ic_plusone_tall_off_client=0x7f02007a;
+        public static final int powered_by_google_dark=0x7f02007b;
+        public static final int powered_by_google_light=0x7f02007c;
     }
     public static final class id {
         public static final int action_bar=0x7f080030;
@@ -1519,18 +1520,19 @@ containing a value of this type.
         public static final int text_imagen_lugar=0x7f0b0037;
         public static final int text_map_unavaliable=0x7f0b0038;
         public static final int text_name=0x7f0b0039;
-        public static final int text_no_places=0x7f0b003a;
-        public static final int text_nombre_lugar=0x7f0b003b;
-        public static final int text_photo=0x7f0b003c;
-        public static final int text_place_saved=0x7f0b003d;
-        public static final int text_title_image_chooser=0x7f0b003e;
-        public static final int title_activity_editar_lugar=0x7f0b003f;
-        public static final int title_activity_mostrar_lugar=0x7f0b0040;
-        public static final int title_activity_principal=0x7f0b0041;
-        public static final int title_activity_show_place_photo=0x7f0b0042;
-        public static final int title_section_lista=0x7f0b0043;
-        public static final int title_section_mapa=0x7f0b0044;
-        public static final int wallet_buy_button_place_holder=0x7f0b0045;
+        public static final int text_no_photo=0x7f0b003a;
+        public static final int text_no_places=0x7f0b003b;
+        public static final int text_nombre_lugar=0x7f0b003c;
+        public static final int text_photo=0x7f0b003d;
+        public static final int text_place_saved=0x7f0b003e;
+        public static final int text_title_image_chooser=0x7f0b003f;
+        public static final int title_activity_editar_lugar=0x7f0b0040;
+        public static final int title_activity_mostrar_lugar=0x7f0b0041;
+        public static final int title_activity_principal=0x7f0b0042;
+        public static final int title_activity_show_place_photo=0x7f0b0043;
+        public static final int title_section_lista=0x7f0b0044;
+        public static final int title_section_mapa=0x7f0b0045;
+        public static final int wallet_buy_button_place_holder=0x7f0b0046;
     }
     public static final class style {
         /**  API 14 theme customizations can go here. 
@@ -4041,28 +4043,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name es.cmartincha.mislugares:maskedWalletDetailsTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsTextAppearance = 4;
-        /** Attributes that can be used with a ZoomableImageView.
+        /** Attributes that can be used with a ZoomableView.
            <p>Includes the following attributes:</p>
            <table>
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ZoomableImageView_image es.cmartincha.mislugares:image}</code></td><td></td></tr>
+           <tr><td><code>{@link #ZoomableView_image es.cmartincha.mislugares:image}</code></td><td></td></tr>
            </table>
-           @see #ZoomableImageView_image
+           @see #ZoomableView_image
          */
-        public static final int[] ZoomableImageView = {
+        public static final int[] ZoomableView = {
             0x7f01008e
         };
         /**
           <p>This symbol is the offset where the {@link es.cmartincha.mislugares.R.attr#image}
-          attribute's value can be found in the {@link #ZoomableImageView} array.
+          attribute's value can be found in the {@link #ZoomableView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name es.cmartincha.mislugares:image
         */
-        public static final int ZoomableImageView_image = 0;
+        public static final int ZoomableView_image = 0;
     };
 }

@@ -7,7 +7,7 @@
     android:paddingTop="8dp"
     tools:context="es.cmartincha.myplaces.ui.principal.list.PlacesListFragment">
 
-    <ImageView
+    <es.cmartincha.myplaces.ui.view.AsyncImageView
         android:id="@+id/ivListPlacePhoto"
         android:layout_width="48dp"
         android:layout_height="48dp"

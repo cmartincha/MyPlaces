@@ -2,11 +2,13 @@
 package es.cmartincha.myplaces.ui.principal.list;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.util.Log;
+import android.util.TypedValue;
 
 import java.io.FileNotFoundException;
 
@@ -51,5 +53,11 @@ public class ImageUtil {
         }
 
         return null;
+    }
+
+    public static float convertDpToPixels(Context context, int dps) {
+        Resources resources = context.getResources();
+
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps, resources.getDisplayMetrics());
     }
 }

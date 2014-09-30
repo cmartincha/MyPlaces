@@ -7,11 +7,11 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
+import es.cmartincha.myplaces.ui.view.AsyncImageView;
 
 public class PlacesListAdapter extends CursorAdapter {
     private Context mContext;
@@ -33,19 +33,13 @@ public class PlacesListAdapter extends CursorAdapter {
     private void setUpListItemViews(View view, ViewHolder viewHolder, Place place) {
         viewHolder.tvPlaceName.setText(place.getName());
         viewHolder.tvPlaceDescription.setText(place.getDescription());
-
-        setUpPhoto(viewHolder, place);
+        if (place.hasPhoto()) {
+            viewHolder.ivPlacePhoto.setImageUriAsync(place.getPhotoUri());
+        } else {
+            viewHolder.ivPlacePhoto.setImageDrawable(mContext.getResources().getDrawable(R.drawable.default_place_background));
+        }
 
         view.setTag(R.id.tag_lugar, place);
-    }
-
-    private void setUpPhoto(ViewHolder viewHolder, Place place) {
-        if (place.hasPhoto()) {
-            ImageLoader imageLoader = new ImageLoader(place.getPhotoUri(),
-                    viewHolder.ivPlacePhoto, mContext);
-
-            imageLoader.loadBitmap();
-        }
     }
 
     private ViewHolder getViewHolder(View view) {
@@ -54,7 +48,7 @@ public class PlacesListAdapter extends CursorAdapter {
         if (viewHolder == null) {
             viewHolder = new ViewHolder();
 
-            viewHolder.ivPlacePhoto = (ImageView) view
+            viewHolder.ivPlacePhoto = (AsyncImageView) view
                     .findViewById(R.id.ivListPlacePhoto);
             viewHolder.tvPlaceName = (TextView) view
                     .findViewById(R.id.tvListPlaceName);
@@ -76,7 +70,7 @@ public class PlacesListAdapter extends CursorAdapter {
     }
 
     static class ViewHolder {
-        ImageView ivPlacePhoto;
+        AsyncImageView ivPlacePhoto;
         TextView tvPlaceName;
         TextView tvPlaceDescription;
     }

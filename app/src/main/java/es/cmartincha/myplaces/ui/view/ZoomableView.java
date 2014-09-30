@@ -15,7 +15,7 @@ import android.view.View;
 
 import es.cmartincha.mislugares.R;
 
-public class ZoomableImageView extends View implements ScaleGestureDetector.OnScaleGestureListener {
+public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGestureListener {
     private ScaleGestureDetector mDetector;
     private Bitmap mImageBitmap;
     private Matrix mMatrix = new Matrix();
@@ -25,11 +25,18 @@ public class ZoomableImageView extends View implements ScaleGestureDetector.OnSc
     private RectF mDestinationRectF;
     private boolean mSuspendTouchEvent = false;
 
-    public ZoomableImageView(Context context, AttributeSet attrs) {
+    public ZoomableView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         setScaleGestureDetector(context);
         setBitmap(context, attrs);
+        setInitialBounds();
+    }
+
+    public ZoomableView(Context context) {
+        super(context);
+
+        setScaleGestureDetector(context);
         setInitialBounds();
     }
 
@@ -39,16 +46,10 @@ public class ZoomableImageView extends View implements ScaleGestureDetector.OnSc
     }
 
     private void setBitmap(Context context, AttributeSet attrs) {
-        TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ZoomableImageView, 0, 0);
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(attributes.getResourceId(R.styleable.ZoomableImageView_image, 0));
+        TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ZoomableView, 0, 0);
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(attributes.getResourceId(R.styleable.ZoomableView_image, 0));
+
         mImageBitmap = bitmapDrawable.getBitmap();
-    }
-
-    public ZoomableImageView(Context context) {
-        super(context);
-
-        setScaleGestureDetector(context);
-        setInitialBounds();
     }
 
     private void setScaleGestureDetector(Context context) {

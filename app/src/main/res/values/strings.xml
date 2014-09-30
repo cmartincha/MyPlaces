@@ -32,5 +32,6 @@
     <string name="action_search">Buscar</string>
     <string name="search_hint">Busca un lugar</string>
     <string name="error_text_get_photo">No se ha podido obtener la foto</string>
+    <string name="text_no_photo">Sin foto</string>
 
 </resources>
