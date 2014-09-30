@@ -1,5 +1,5 @@
 
-package es.cmartincha.myplaces.ui.place;
+package es.cmartincha.myplaces.ui.dialog;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,15 +10,13 @@ import android.widget.TextView;
 
 import es.cmartincha.mislugares.R;
 
-public class PhotoSourceDialogAdapter extends ArrayAdapter<PhotoSourceDialogItem> {
-    private static final PhotoSourceDialogItem[] photoSourceItems = {
-            new PhotoSourceDialogItem(R.string.text_camera, R.drawable.ic_action_camera),
-            new PhotoSourceDialogItem(R.string.text_gallery, R.drawable.ic_action_picture),
-            new PhotoSourceDialogItem(R.string.text_no_photo, R.drawable.ic_action_cancel)
-    };
+public class DialogAdapter extends ArrayAdapter<DialogItem> {
+    private DialogItem[] mDialogItems;
 
-    public PhotoSourceDialogAdapter(Context context) {
+    public DialogAdapter(Context context, DialogItem[] dialogItems) {
         super(context, R.layout.dialog_list_item_source_photo);
+
+        mDialogItems = dialogItems;
 
         fillDialogOptionsItems();
     }
@@ -26,7 +24,7 @@ public class PhotoSourceDialogAdapter extends ArrayAdapter<PhotoSourceDialogItem
     private void fillDialogOptionsItems() {
         setNotifyOnChange(false);
 
-        for (PhotoSourceDialogItem imageAppsItem : photoSourceItems) {
+        for (DialogItem imageAppsItem : mDialogItems) {
             add(imageAppsItem);
         }
 
@@ -35,7 +33,7 @@ public class PhotoSourceDialogAdapter extends ArrayAdapter<PhotoSourceDialogItem
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        PhotoSourceDialogItem item = getItem(position);
+        DialogItem item = getItem(position);
         PhotoSourceDialogItemHolder holder;
 
         if (convertView == null) {

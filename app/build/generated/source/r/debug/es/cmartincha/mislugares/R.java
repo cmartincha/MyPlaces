@@ -1306,16 +1306,18 @@ containing a value of this type.
         public static final int ic_action_camera=0x7f020070;
         public static final int ic_action_cancel=0x7f020071;
         public static final int ic_action_discard=0x7f020072;
-        public static final int ic_action_edit=0x7f020073;
-        public static final int ic_action_picture=0x7f020074;
-        public static final int ic_action_search=0x7f020075;
-        public static final int ic_launcher=0x7f020076;
-        public static final int ic_plusone_medium_off_client=0x7f020077;
-        public static final int ic_plusone_small_off_client=0x7f020078;
-        public static final int ic_plusone_standard_off_client=0x7f020079;
-        public static final int ic_plusone_tall_off_client=0x7f02007a;
-        public static final int powered_by_google_dark=0x7f02007b;
-        public static final int powered_by_google_light=0x7f02007c;
+        public static final int ic_action_discard_gray=0x7f020073;
+        public static final int ic_action_edit=0x7f020074;
+        public static final int ic_action_edit_gray=0x7f020075;
+        public static final int ic_action_picture=0x7f020076;
+        public static final int ic_action_search=0x7f020077;
+        public static final int ic_launcher=0x7f020078;
+        public static final int ic_plusone_medium_off_client=0x7f020079;
+        public static final int ic_plusone_small_off_client=0x7f02007a;
+        public static final int ic_plusone_standard_off_client=0x7f02007b;
+        public static final int ic_plusone_tall_off_client=0x7f02007c;
+        public static final int powered_by_google_dark=0x7f02007d;
+        public static final int powered_by_google_light=0x7f02007e;
     }
     public static final class id {
         public static final int action_bar=0x7f080030;
@@ -1513,26 +1515,28 @@ containing a value of this type.
         public static final int text_button_save=0x7f0b0030;
         public static final int text_camera=0x7f0b0031;
         public static final int text_confirm_discard=0x7f0b0032;
-        public static final int text_descripcion_lugar=0x7f0b0033;
-        public static final int text_description=0x7f0b0034;
-        public static final int text_gallery=0x7f0b0035;
-        public static final int text_icon_app_image=0x7f0b0036;
-        public static final int text_imagen_lugar=0x7f0b0037;
-        public static final int text_map_unavaliable=0x7f0b0038;
-        public static final int text_name=0x7f0b0039;
-        public static final int text_no_photo=0x7f0b003a;
-        public static final int text_no_places=0x7f0b003b;
-        public static final int text_nombre_lugar=0x7f0b003c;
-        public static final int text_photo=0x7f0b003d;
-        public static final int text_place_saved=0x7f0b003e;
-        public static final int text_title_image_chooser=0x7f0b003f;
-        public static final int title_activity_editar_lugar=0x7f0b0040;
-        public static final int title_activity_mostrar_lugar=0x7f0b0041;
-        public static final int title_activity_principal=0x7f0b0042;
-        public static final int title_activity_show_place_photo=0x7f0b0043;
-        public static final int title_section_lista=0x7f0b0044;
-        public static final int title_section_mapa=0x7f0b0045;
-        public static final int wallet_buy_button_place_holder=0x7f0b0046;
+        public static final int text_delete=0x7f0b0033;
+        public static final int text_descripcion_lugar=0x7f0b0034;
+        public static final int text_description=0x7f0b0035;
+        public static final int text_edit=0x7f0b0036;
+        public static final int text_gallery=0x7f0b0037;
+        public static final int text_icon_app_image=0x7f0b0038;
+        public static final int text_imagen_lugar=0x7f0b0039;
+        public static final int text_map_unavaliable=0x7f0b003a;
+        public static final int text_name=0x7f0b003b;
+        public static final int text_no_photo=0x7f0b003c;
+        public static final int text_no_places=0x7f0b003d;
+        public static final int text_nombre_lugar=0x7f0b003e;
+        public static final int text_photo=0x7f0b003f;
+        public static final int text_place_saved=0x7f0b0040;
+        public static final int text_title_image_chooser=0x7f0b0041;
+        public static final int title_activity_editar_lugar=0x7f0b0042;
+        public static final int title_activity_mostrar_lugar=0x7f0b0043;
+        public static final int title_activity_principal=0x7f0b0044;
+        public static final int title_activity_show_place_photo=0x7f0b0045;
+        public static final int title_section_lista=0x7f0b0046;
+        public static final int title_section_mapa=0x7f0b0047;
+        public static final int wallet_buy_button_place_holder=0x7f0b0048;
     }
     public static final class style {
         /**  API 14 theme customizations can go here. 

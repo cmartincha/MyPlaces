@@ -95,12 +95,12 @@ public final class R {
 		public static final int common_signin_btn_text_normal_light = 0x7f02006c;
 		public static final int common_signin_btn_text_pressed_dark = 0x7f02006d;
 		public static final int common_signin_btn_text_pressed_light = 0x7f02006e;
-		public static final int ic_plusone_medium_off_client = 0x7f020077;
-		public static final int ic_plusone_small_off_client = 0x7f020078;
-		public static final int ic_plusone_standard_off_client = 0x7f020079;
-		public static final int ic_plusone_tall_off_client = 0x7f02007a;
-		public static final int powered_by_google_dark = 0x7f02007b;
-		public static final int powered_by_google_light = 0x7f02007c;
+		public static final int ic_plusone_medium_off_client = 0x7f020079;
+		public static final int ic_plusone_small_off_client = 0x7f02007a;
+		public static final int ic_plusone_standard_off_client = 0x7f02007b;
+		public static final int ic_plusone_tall_off_client = 0x7f02007c;
+		public static final int powered_by_google_dark = 0x7f02007d;
+		public static final int powered_by_google_light = 0x7f02007e;
 	}
 	public static final class id {
 		public static final int book_now = 0x7f080022;
@@ -153,7 +153,7 @@ public final class R {
 		public static final int common_google_play_services_update_title = 0x7f0b0026;
 		public static final int common_signin_button_text = 0x7f0b0027;
 		public static final int common_signin_button_text_long = 0x7f0b0028;
-		public static final int wallet_buy_button_place_holder = 0x7f0b0046;
+		public static final int wallet_buy_button_place_holder = 0x7f0b0048;
 	}
 	public static final class style {
 		public static final int Theme_IAPTheme = 0x7f0c003d;

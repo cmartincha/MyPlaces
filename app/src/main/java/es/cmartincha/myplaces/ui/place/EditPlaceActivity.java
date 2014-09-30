@@ -30,11 +30,16 @@ import java.util.Locale;
 
 import es.cmartincha.mislugares.R;
 import es.cmartincha.myplaces.lib.Place;
+import es.cmartincha.myplaces.ui.dialog.DialogAdapter;
+import es.cmartincha.myplaces.ui.dialog.DialogItem;
 import es.cmartincha.myplaces.ui.principal.PrincipalActivity;
 
 public class EditPlaceActivity extends ActionBarActivity implements OnClickListener,
         android.content.DialogInterface.OnClickListener {
     public static final String EXTRA_PLACE_INFO = "extra_place";
+    public static final int DIALOG_CAMERA_OPTION = 0;
+    public static final int DIALOG_GALLERY_OPTION = 1;
+    public static final int DIALOG_NO_PHOTO_OPTION = 2;
 
     private static final int CAMERA_REQUEST = 0;
     private static final int GALLERY_REQUEST = 1;
@@ -104,7 +109,7 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
 
     private void showConfirmDeleteDialog() {
         final Context context = this;
-        AlertDialog.Builder builder = new Builder(this);
+        AlertDialog.Builder builder = new Builder(context);
 
         builder.setMessage(R.string.text_confirm_discard);
         builder.setPositiveButton(android.R.string.ok,
@@ -171,7 +176,12 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
 
     private void showPhotoSourcePickerDialog() {
         Builder builder = new Builder(this);
-        PhotoSourceDialogAdapter adapter = new PhotoSourceDialogAdapter(this);
+        DialogItem[] dialogItems = {
+                new DialogItem(R.string.text_camera, R.drawable.ic_action_camera),
+                new DialogItem(R.string.text_gallery, R.drawable.ic_action_picture),
+                new DialogItem(R.string.text_no_photo, R.drawable.ic_action_cancel)
+        };
+        DialogAdapter adapter = new DialogAdapter(this, dialogItems);
 
         builder.setTitle(R.string.text_title_image_chooser);
         builder.setAdapter(adapter, this);
@@ -212,13 +222,13 @@ public class EditPlaceActivity extends ActionBarActivity implements OnClickListe
     @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
-            case PhotoSourceDialogItem.DIALOG_CAMERA_OPTION:
+            case DIALOG_CAMERA_OPTION:
                 showCameraApp();
                 break;
-            case PhotoSourceDialogItem.DIALOG_GALLERY_OPTION:
+            case DIALOG_GALLERY_OPTION:
                 showGalleryApp();
                 break;
-            case PhotoSourceDialogItem.DIALOG_NO_PHOTO_OPTION:
+            case DIALOG_NO_PHOTO_OPTION:
                 removePlacePhoto();
                 break;
         }
