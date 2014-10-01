@@ -19,6 +19,8 @@ import es.cmartincha.mislugares.R;
  * View que muestra una imagen y permite redimensionarla y moverte por ella
  */
 public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGestureListener {
+    private static int SCALE_FACTOR_MULTIPLIER = 4;
+
     private ScaleGestureDetector mDetector;
     private Bitmap mImageBitmap;
     private Matrix mMatrix = new Matrix();
@@ -131,9 +133,19 @@ public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGe
     @Override
     public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
         float scaleFactor = scaleGestureDetector.getScaleFactor();
+        float inverseScaleFactor = 2 - scaleFactor;
 
-        mDestinationRectF.right *= scaleFactor;
-        mDestinationRectF.bottom *= scaleFactor;
+        if (mDestinationRectF.right >= 0) {
+            mDestinationRectF.right *= scaleFactor;
+        } else {
+            mDestinationRectF.right *= inverseScaleFactor;
+        }
+
+        if (mDestinationRectF.bottom >= 0) {
+            mDestinationRectF.bottom *= scaleFactor;
+        } else {
+            mDestinationRectF.bottom *= inverseScaleFactor;
+        }
 
         return true;
     }
@@ -149,7 +161,7 @@ public class ZoomableView extends View implements ScaleGestureDetector.OnScaleGe
         //Es muy probable que no los apartes a la vez y uno de ellos siga desplazandose momentaneamente por la pantalla
         mSuspendTouchEvent = true;
 
-        new CountDownTimer(300, 3000) {
+        new CountDownTimer(SCALE_FACTOR_MULTIPLIER, 3000) {
             @Override
             public void onTick(long l) {
             }
